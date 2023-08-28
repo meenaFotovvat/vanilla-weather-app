@@ -32,19 +32,29 @@ function displayWeatherInfo(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-
   tempElement.innerHTML = Math.round(response.data.temperature.current);
   userSearchedElement.innerHTML = response.data.city;
   humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   descriptionElement.innerHTML = response.data.condition.description;
   dateElement.innerHTML = formatDate(response.data.time * 1000);
-  iconElement.setAttribute("src", response.data.condition.icon_url)
-  iconElement.setAttribute("alt", response.data.condition.description)
+  iconElement.setAttribute("src", response.data.condition.icon_url);
+  iconElement.setAttribute("alt", response.data.condition.description);
 }
 
-let apiKey = "a04fbba2a8fa1f08939o6f7002ft58e8";
-let city = "lisbon";
-let baseURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "a04fbba2a8fa1f08939o6f7002ft58e8";
+  let baseURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(baseURL).then(displayWeatherInfo);
+}
 
-axios.get(baseURL).then(displayWeatherInfo);
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  search(cityInput.value);
+}
+
+let form = document.querySelector("#search-city");
+form.addEventListener("submit", handleSubmit);
+
+search("Mashhad");
