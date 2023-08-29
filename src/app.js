@@ -57,6 +57,9 @@ function handleSubmit(event) {
 
 function convertToFahrenheit(event) {
   event.preventDefault();
+
+  centigradeLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let fahrenheitTemp = Math.round((centigradeValue * 9) / 5 + 32);
   let tempValue = document.querySelector("#temp-value");
   tempValue.innerHTML = fahrenheitTemp;
@@ -64,6 +67,9 @@ function convertToFahrenheit(event) {
 
 function convertTocentigrade(event) {
   event.preventDefault();
+
+  fahrenheitLink.classList.remove("active");
+  centigradeLink.classList.add("active");
   let tempValue = document.querySelector("#temp-value");
   tempValue.innerHTML = centigradeValue;
 }
