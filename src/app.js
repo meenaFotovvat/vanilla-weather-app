@@ -32,7 +32,8 @@ function displayWeatherInfo(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  tempElement.innerHTML = Math.round(response.data.temperature.current);
+  centigradeValue = Math.round(response.data.temperature.current);
+  tempElement.innerHTML = centigradeValue;
   userSearchedElement.innerHTML = response.data.city;
   humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
@@ -54,7 +55,28 @@ function handleSubmit(event) {
   search(cityInput.value);
 }
 
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheitTemp = Math.round((centigradeValue * 9) / 5 + 32);
+  let tempValue = document.querySelector("#temp-value");
+  tempValue.innerHTML = fahrenheitTemp;
+}
+
+function convertTocentigrade(event) {
+  event.preventDefault();
+  let tempValue = document.querySelector("#temp-value");
+  tempValue.innerHTML = centigradeValue;
+}
+
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", handleSubmit);
+
+let centigradeValue = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
+let centigradeLink = document.querySelector("#centigrade-link");
+centigradeLink.addEventListener("click", convertTocentigrade);
 
 search("Mashhad");

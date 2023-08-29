@@ -30,9 +30,15 @@ li::first-letter{
   text-transform: capitalize;
 }
 
+a {
+  text-decoration: none;
+  color: #202124;
+}
+
 footer {
   text-align: center;
 }
+
 
 .main {
   padding: 24px;
@@ -59,12 +65,12 @@ footer {
 .deg {
   position: relative;
   bottom: 34px;
-  font-size: 23px;
+  font-size: 18px;
 }
 
 .more-info {
   margin-left: 9px;
-  padding-top: 8px;
+  padding-top: 14px;
 }
 
 .weather-chart {
