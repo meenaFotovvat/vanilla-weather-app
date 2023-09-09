@@ -102,3 +102,16 @@ footer {
 .location-date {
   color: #202124;
 }
+
+.weather-forecast-info{
+  text-align: center;
+}
+
+.weather-forecast-temp-max{
+  font-size: 13px;
+}
+
+.weather-forecast-temp-min{
+  font-size: 13px;
+  opacity: 0.3;
+}
