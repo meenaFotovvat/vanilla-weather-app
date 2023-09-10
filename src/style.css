@@ -103,8 +103,13 @@ footer {
   color: #202124;
 }
 
-.weather-forecast-info{
-  text-align: center;
+.forecast-section{
+  margin-top: 25px;
+}
+
+.weather-forecast-info {
+  display: flex;
+  justify-content: space-around;
 }
 
 .weather-forecast-temp-max{
